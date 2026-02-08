@@ -67,3 +67,9 @@ class Course:
         if grade < 0 or grade > 100:
             raise ValueError("Grade must be between 0 and 100.")
         self.grade_list[f"week_{week}"] = grade
+    
+    def get_final_grade(self):
+        grades = [g for g in self.grade_list.values() if g is not None]
+        if not grades:
+            return None
+        return np.mean(grades)
